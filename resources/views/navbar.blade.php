@@ -49,13 +49,13 @@
                 <li class="card m-0 nav-item dropdown">
                     <a class="nav-link m-0" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">person</i> {{ \Auth::user()->name }}
-                        <p class="d-lg-none d-md-block">
+                        <!-- <p class="d-lg-none d-md-block">
                             Account
-                        </p>
+                        </p> -->
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                        <a class="dropdown-item" href="{{ url('/admin/adminuser/profile').'/'.\Auth::user()->_id }}">Profile</a>
-                        {{--<a class="dropdown-item" href="#">Settings</a>
+                        {{--<a class="dropdown-item" href="{{ url('/admin/adminuser/profile').'/'.\Auth::user()->_id }}">Profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
                         <div class="dropdown-divider"></div>--}}
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Permission;
-use App\User;
+// use App\Permission;
+// use App\User;
+
 use Illuminate\Http\Request;
 use App\Models\{Querymodel};
+use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class OrderController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.list');
+        return view('order_history_list');
     }
 
     public function get_list(Request $req)
@@ -42,20 +44,37 @@ class UserController extends Controller
 
         $data_filter = $req['data_filter'];
         $column      = [
-            'id'                => 'u.id',
-            'name'              => 'u.name',
-            'email'             => 'u.email',
-            'created_at'        => 'u.created_at',
-            'updated_at'        => 'u.updated_at',
+            'id'                        => 'o.id',
+            'order_id'                  => 'o.order_id',
+            'advertiser_id'             => 'o.advertiser_id',
+            'campaign_id'               => 'o.campaign_id',
+            'user_commission_amount'    => 'o.user_commission_amount',
+            'purchase_amount'           => 'o.purchase_amount',
+            'btc_value'                 => 'o.btc_value',
+            'btc_rate'                  => 'o.btc_rate',
+            'status'                    => 'o.status',
+            'created_at'                => 'o.created_at',
+            'advertiser_name'           => 'a.full_name',
+            'campaign_name'             => 'c.name',
+            'cust_first_name'           => 'cust.first_name',
+            'cust_last_name'            => 'cust.last_name',
+            'cust_unique_id'            => 'cust.unique_id',
         ];
         $cols = [];
 
         foreach ($column AS $k => $v) {
             $cols[] = $v . ' AS ' . $k;
         }
-        $ptable = 'users as u ';
+        $ptable = 'orders as o JOIN advertisers as a on o.advertiser_id = a.id JOIN campaigns as c on o.campaign_id = c.id JOIN customers as cust on o.user_id = cust.id';
+        // $ptable = 'orders as o ';
 
-        $where = '';
+        $where = " where txn_type = 'transaction' ";
+
+        if(isset($in['user'])){
+            
+            $where .= " AND user_id = '".$in['user']."'";
+        }
+
         $order = '';
         if (isset($req['search'])) {
             if ($in['search']['value'] != '') {
@@ -129,7 +148,6 @@ class UserController extends Controller
             $res->DT_RowClass = 'success';
             $res->DT_RowId    = $res->id;
             $res->created_at  = date('d M Y H:i a', strtotime($res->created_at));
-            $res->updated_at  = date('d M Y H:i a', strtotime($res->updated_at));
             $output['data'][] = $res;
         }
 

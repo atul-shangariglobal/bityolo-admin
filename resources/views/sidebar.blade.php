@@ -55,11 +55,11 @@
                 </li>
 
             @endforeach
-            <li class="nav-item dropdown d-lg-none">
+            <li class="nav-item dropdown">
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
-                    <i class="material-icons">exit_to_app</i>
+                    <!-- <i class="material-icons">exit_to_app</i> -->
                     {{ __('Logout') }}
                 </a>
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Permission;
-use App\User;
-use Illuminate\Http\Request;
-use App\Models\{Querymodel};
+// use App\Permission;
+// use App\User;
 
-class UserController extends Controller
+use Illuminate\Http\Request;
+use App\Models\{Querymodel,Customer};
+use Illuminate\Support\Facades\DB;
+
+class CustomerController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.list');
+        return view('customer.list');
     }
 
     public function get_list(Request $req)
@@ -42,18 +44,25 @@ class UserController extends Controller
 
         $data_filter = $req['data_filter'];
         $column      = [
-            'id'                => 'u.id',
-            'name'              => 'u.name',
-            'email'             => 'u.email',
-            'created_at'        => 'u.created_at',
-            'updated_at'        => 'u.updated_at',
+            'id'                => 'c.id',
+            'unique_id'         => 'c.unique_id',
+            'first_name'        => 'c.first_name',
+            'last_name'         => 'c.last_name',
+            'email'             => 'c.email',
+            'is_active'         => 'c.is_active',
+            'is_referred'       => 'c.is_referred',
+            'country'           => 'c.country',
+            'wallet_balance'    => 'c.wallet_balance',
+            'referral_code'     => 'c.referral_code',
+            'created_at'        => 'c.created_at',
+            'updated_at'        => 'c.updated_at',
         ];
         $cols = [];
 
         foreach ($column AS $k => $v) {
             $cols[] = $v . ' AS ' . $k;
         }
-        $ptable = 'users as u ';
+        $ptable = 'customers as c ';
 
         $where = '';
         $order = '';
@@ -134,5 +143,42 @@ class UserController extends Controller
         }
 
         die(json_encode($output));
+    }
+
+    public function changeUserStatus(Request $req)
+    {
+        $data = $req->input();
+        // $user = \Auth::user();
+        $error = false;
+
+        if(!$data['usr_id']){
+            die(json_encode(['status'=>'201','msg'=>'Something went wrong!']));
+        }
+
+        if(!in_array($data['status'], ['Enable','Disable'])){
+            die(json_encode(['status'=>'201','msg'=>'Something went wrong!']));
+        }
+
+        $status = '0';
+        if($data['status'] == 'Enable'){
+            $status = 1;
+        }
+
+        $custData = Customer::where('unique_id',$data['usr_id'])->first();
+        $custData->is_active = $status;
+        $custData->save();
+
+        die(json_encode(['status'=>'200','msg'=>'User '.$data['status'].'d successfuly']));
+    }
+
+    public function get_detail($uid = false)
+    {
+        if(!$uid) return abort(404);
+        $this->user = \Auth::user();
+        $data['user_data'] = Customer::where('unique_id',$uid)->first();
+
+        if(!$data['user_data']) return abort(404);
+        
+        return view('customer.detail',$data);
     }
 }

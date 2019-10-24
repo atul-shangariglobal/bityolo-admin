@@ -7,11 +7,15 @@
     <link rel="icon" href="https://arax-image.s3.ap-south-1.amazonaws.com/email/3PZpJFqANX77ndMmWMUiyubZJv0F9UtQSXRgQkbv.png" type="image/x-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
     <title>
         @yield('title')
     </title>
-
+    <script type="text/javascript">
+      var CONF = { baseurl :'{{url('/')}}' };
+      var TOOLS = { spin_html : '<i class="fa fa-cog fa-spin"></i> Pl ease wait...' };
+    </script>
 @section('css')
     <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -68,14 +72,14 @@
 @section('js')
     <script src="{{ asset('dist/js/core/jquery.min.js')}}"></script>
     <script src="{{ asset('dist/js/core/popper.min.js')}}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> -->
     <script src="{{ asset('dist/js/core/bootstrap-material-design.min.js')}}"></script>
     <script src="{{ asset('dist/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
     <!-- Plugin for the momentJs  -->
     <script src="{{ asset('dist/js/plugins/moment.min.js')}}"></script>
     <!--  Plugin for Sweet Alert -->
     <script src="{{ asset('dist/js/core/bootstrap-material-datetimepicker.js')}}"></script>
-    <script src="{{ asset('dist/js/plugins/sweetalert2.js')}}"></script>
+    <!-- <script src="{{ asset('dist/js/plugins/sweetalert2.js')}}"></script> -->
     <!-- Forms Validations Plugin -->
     <script src="{{ asset('dist/js/plugins/jquery.validate.min.js')}}"></script>
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
@@ -97,37 +101,42 @@
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{ asset('dist/js/plugins/nouislider.min.js')}}"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <script src="{{ asset('dist/js/core.js')}}"></script>
+    <!-- <script src="{{ asset('dist/js/core.js')}}"></script> -->
     <!-- Library for adding dinamically elements -->
-    <script src="{{ asset('dist/js/plugins/arrive.min.js')}}"></script>
+    <!-- <script src="{{ asset('dist/js/plugins/arrive.min.js')}}"></script> -->
     <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script> -->
     <!-- Place this tag in your head or just before your close body tag. -->
     <script src="{{ asset('dist/js/buttons.js')}}"></script>
     <!-- Chartist JS -->
-    <script src="{{ asset('dist/js/plugins/chartist.min.js')}}"></script>
+    <!-- <script src="{{ asset('dist/js/plugins/chartist.min.js')}}"></script> -->
     <!--  Notifications Plugin    -->
     <script src="{{ asset('dist/js/plugins/bootstrap-notify.js')}}"></script>
 
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('dist/js/material-dashboard.min.js?v=2.1.1')}}" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('dist/demo/demo.js')}}"></script>
+    <!-- <script src="{{ asset('dist/demo/demo.js')}}"></script> -->
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/js/mdb.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/js/mdb.min.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
-    <script src="{{ asset('dist/js/tinymce.min.js') }}"></script>
-    {{--<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xkds93b1eznt3jr556u240t019664ptrrdgks5nz70rei56w"></script>--}}
-    {{--<script src="https://cloud.tinymce.com/5-testing/tinymce.min.js"></script>--}}
-    <script>tinymce.init({ selector:'#summernote',height: 200, plugins: [
+    <!-- <script src="{{ asset('dist/js/tinymce.min.js') }}"></script> -->
+    <!-- {{--<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xkds93b1eznt3jr556u240t019664ptrrdgks5nz70rei56w"></script>--}} -->
+    <!-- {{--<script src="https://cloud.tinymce.com/5-testing/tinymce.min.js"></script>--}} -->
+    <!-- <script>tinymce.init({ selector:'#summernote',height: 200, plugins: [
                 'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
                 'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
                 'save table contextmenu directionality emoticons template paste textcolor'
             ],
             valid_children : "+body[style]"
-        });</script>
+        });</script> -->
+
+    <script type="text/javascript">
+        $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+    </script>
+    
     <script>
         window.onload = ()=> {
             $('.search-inside').hide(0);
@@ -390,7 +399,7 @@
 
         });
     </script>
-
+    @yield('footerjs')
 @show
 </body>
 </html>
