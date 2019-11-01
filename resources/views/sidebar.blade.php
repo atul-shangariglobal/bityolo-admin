@@ -5,7 +5,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
     <div class="logo">
-        <a href="{{ url('/home') }}" class="simple-text logo-normal">
+        <a href="{{ url('/dashboard') }}" class="simple-text logo-normal">
            {{-- <img src="https://arax.io/assets/images/logo.png" alt="" width="20%">--}}
             <img style="animation: fa-spin 10s infinite;" src="https://arax-image.s3.ap-south-1.amazonaws.com/email/3PZpJFqANX77ndMmWMUiyubZJv0F9UtQSXRgQkbv.png" alt="" width="35%">
             COSS ADMIN

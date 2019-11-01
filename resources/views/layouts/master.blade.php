@@ -21,11 +21,11 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-        <link href="{{ asset('dist/css/material-dashboard.min.css?v=0.2') }}" rel="stylesheet">
-        <link href="{{ asset('dist/demo/demo.css?v=0.4')}}" rel="stylesheet" />
+        <link href="{{ asset('public/dist/css/material-dashboard.min.css?v=0.2') }}" rel="stylesheet">
+        <link href="{{ asset('public/dist/demo/demo.css?v=0.4')}}" rel="stylesheet" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-        <link rel="stylesheet" href="{{ asset('dist/css/bootstrap-material-datetimepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/dist/css/bootstrap-material-datetimepicker.css') }}">
     @show
 
 </head>
@@ -70,59 +70,59 @@
 </div>
 <!--   Core JS Files   -->
 @section('js')
-    <script src="{{ asset('dist/js/core/jquery.min.js')}}"></script>
-    <script src="{{ asset('dist/js/core/popper.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/core/jquery.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/core/popper.min.js')}}"></script>
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> -->
-    <script src="{{ asset('dist/js/core/bootstrap-material-design.min.js')}}"></script>
-    <script src="{{ asset('dist/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/core/bootstrap-material-design.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
     <!-- Plugin for the momentJs  -->
-    <script src="{{ asset('dist/js/plugins/moment.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/moment.min.js')}}"></script>
     <!--  Plugin for Sweet Alert -->
-    <script src="{{ asset('dist/js/core/bootstrap-material-datetimepicker.js')}}"></script>
-    <!-- <script src="{{ asset('dist/js/plugins/sweetalert2.js')}}"></script> -->
+    <script src="{{ asset('public/dist/js/core/bootstrap-material-datetimepicker.js')}}"></script>
+    <!-- <script src="{{ asset('public/dist/js/plugins/sweetalert2.js')}}"></script> -->
     <!-- Forms Validations Plugin -->
-    <script src="{{ asset('dist/js/plugins/jquery.validate.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/jquery.validate.min.js')}}"></script>
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <script src="{{ asset('dist/js/plugins/jquery.bootstrap-wizard.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/jquery.bootstrap-wizard.js')}}"></script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="{{ asset('dist/js/plugins/bootstrap-selectpicker.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/bootstrap-selectpicker.js')}}"></script>
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="{{ asset('dist/js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-    <script src="{{ asset('dist/js/plugins/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/jquery.dataTables.min.js')}}"></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <script src="{{ asset('dist/js/plugins/bootstrap-tagsinput.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/bootstrap-tagsinput.js')}}"></script>
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="{{ asset('dist/js/plugins/jasny-bootstrap.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/jasny-bootstrap.min.js')}}"></script>
     <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="{{ asset('dist/js/plugins/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/fullcalendar.min.js')}}"></script>
     <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <script src="{{ asset('dist/js/plugins/jquery-jvectormap.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/jquery-jvectormap.js')}}"></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="{{ asset('dist/js/plugins/nouislider.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/nouislider.min.js')}}"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <!-- <script src="{{ asset('dist/js/core.js')}}"></script> -->
+    <!-- <script src="{{ asset('public/dist/js/core.js')}}"></script> -->
     <!-- Library for adding dinamically elements -->
-    <!-- <script src="{{ asset('dist/js/plugins/arrive.min.js')}}"></script> -->
+    <!-- <script src="{{ asset('public/dist/js/plugins/arrive.min.js')}}"></script> -->
     <!--  Google Maps Plugin    -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script> -->
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script src="{{ asset('dist/js/buttons.js')}}"></script>
+    <script src="{{ asset('public/dist/js/buttons.js')}}"></script>
     <!-- Chartist JS -->
-    <!-- <script src="{{ asset('dist/js/plugins/chartist.min.js')}}"></script> -->
+    <!-- <script src="{{ asset('public/dist/js/plugins/chartist.min.js')}}"></script> -->
     <!--  Notifications Plugin    -->
-    <script src="{{ asset('dist/js/plugins/bootstrap-notify.js')}}"></script>
+    <script src="{{ asset('public/dist/js/plugins/bootstrap-notify.js')}}"></script>
 
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('dist/js/material-dashboard.min.js?v=2.1.1')}}" type="text/javascript"></script>
+    <script src="{{ asset('public/dist/js/material-dashboard.min.js?v=2.1.1')}}" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <!-- <script src="{{ asset('dist/demo/demo.js')}}"></script> -->
+    <!-- <script src="{{ asset('public/dist/demo/demo.js')}}"></script> -->
 
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/js/mdb.min.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
-    <!-- <script src="{{ asset('dist/js/tinymce.min.js') }}"></script> -->
+    <!-- <script src="{{ asset('public/dist/js/tinymce.min.js') }}"></script> -->
     <!-- {{--<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xkds93b1eznt3jr556u240t019664ptrrdgks5nz70rei56w"></script>--}} -->
     <!-- {{--<script src="https://cloud.tinymce.com/5-testing/tinymce.min.js"></script>--}} -->
     <!-- <script>tinymce.init({ selector:'#summernote',height: 200, plugins: [

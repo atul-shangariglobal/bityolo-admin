@@ -13,10 +13,11 @@
                             <thead>
                                 <tr>
                                     <td></td>
+                                    <td>Id</td>
                                     <td>Unique Id</td>
                                     <td>Full Name</td>
                                     <td>Email</td>
-                                    <td>Wallet Balance</td>
+                                    <td>Wallet Balance (USD)</td>
                                     <td>Country</td>
                                     <td>Referral Code</td>
                                     <td>Created At</td>
@@ -59,6 +60,7 @@
             "columns":  [
                 {"className":'details-control',"orderable":false,"visible":false,"data":'',"defaultContent": ''},
                 { "data": "id","visible":false},
+                { "data": "unique_id"},
                 { "data": "first_name",
                     render: function ( data, type, row )
                     {

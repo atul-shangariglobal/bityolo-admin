@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\{Querymodel};
 use Illuminate\Support\Facades\DB;
 
-class WalletController extends Controller
+class ReferralController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,7 +28,7 @@ class WalletController extends Controller
      */
     public function index()
     {
-        return view('wallet_history_list');
+        return view('referrals');
     }
 
     public function get_list(Request $req)
@@ -44,34 +44,23 @@ class WalletController extends Controller
 
         $data_filter = $req['data_filter'];
         $column      = [
-            'id'                        => 'o.id',
-            'order_id'                  => 'o.order_id',
-            'btc_value'                 => 'o.btc_value',
-            'btc_rate'                  => 'o.btc_rate',
-            'txn_type'                  => 'o.txn_type',
-            'user_amount'               => 'o.user_amount',
-            'referral_reward_type'      => 'o.referral_reward_type',
-            'status'                    => 'o.status',
-            'created_at'                => 'o.created_at',
-            'cust_first_name'           => 'cust.first_name',
-            'cust_last_name'            => 'cust.last_name',
-            'cust_unique_id'            => 'cust.unique_id',
+            'id'                    => 'rh.id',
+            'referrer_first_name'   => 'cust1.first_name',
+            'referrer_last_name'    => 'cust1.last_name',
+            'referrer_unique_id'    => 'cust1.unique_id',
+            'user_first_name'       => 'cust2.first_name',
+            'user_last_name'        => 'cust2.last_name',
+            'user_unique_id'        => 'cust2.unique_id',
+            'created_at'            => 'rh.created_at',
         ];
         $cols = [];
 
         foreach ($column AS $k => $v) {
             $cols[] = $v . ' AS ' . $k;
         }
-        $ptable = 'orders as o JOIN customers as cust on o.user_id = cust.id';
-        // $ptable = 'orders as o ';
+        $ptable = 'referral_history as rh JOIN customers as cust1 on rh.referrer_id = cust1.id JOIN customers as cust2 on user_unique_id = cust2.id';
 
-        $where = " where txn_type != 'transaction' ";
-
-        if(isset($in['user'])){
-            
-            $where .= " AND user_id = '".$in['user']."'";
-        }
-
+        $where = '';
         $order = '';
         if (isset($req['search'])) {
             if ($in['search']['value'] != '') {
@@ -144,7 +133,6 @@ class WalletController extends Controller
         foreach ($result as $res) {
             $res->DT_RowClass = 'success';
             $res->DT_RowId    = $res->id;
-            $res->txn_type    = ucfirst($res->txn_type);
             $res->created_at  = date('d M Y H:i a', strtotime($res->created_at));
             $output['data'][] = $res;
         }

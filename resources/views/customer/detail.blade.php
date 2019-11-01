@@ -195,7 +195,7 @@
                 {"className":'details-control',"orderable":false,"visible":false,"data":'',"defaultContent": ''},
                 { "data": "id","visible":false},
                 { "data": "order_id"},
-                { "data": "user_referral_amt"},
+                { "data": "user_amount"},
                 { "data": "referral_reward_type"},
                 { "data": "txn_type"},
                 { "data": "btc_value"},
